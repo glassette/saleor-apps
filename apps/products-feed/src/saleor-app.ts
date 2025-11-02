@@ -3,6 +3,7 @@ import { DynamoAPL } from "@saleor/app-sdk/APL/dynamodb";
 import { FileAPL } from "@saleor/app-sdk/APL/file";
 import { SaleorCloudAPL } from "@saleor/app-sdk/APL/saleor-cloud";
 import { UpstashAPL } from "@saleor/app-sdk/APL/upstash";
+import { EnvAPL } from "@saleor/app-sdk/APL/env";
 import { SaleorApp } from "@saleor/app-sdk/saleor-app";
 
 import { dynamoMainTable } from "@/modules/dynamodb/dynamo-main-table";
@@ -58,6 +59,23 @@ switch (aplType) {
 
     break;
   }
+
+  case "env":
+    apl = new EnvAPL({
+      env: {
+        /**
+         * Map your env variables here. You dont have these values yet
+         */
+        token: process.env.SALEOR_APP_TOKEN as string,
+        appId: process.env.SALEOR_APP_ID as string,
+        saleorApiUrl: process.env.SALEOR_API_URL as string,
+      },
+      /**
+       * Set it to "true" - during app registration check you app logs. APL will print values you need
+       */
+      printAuthDataOnRegister: true,
+    });
+    break;
 
   default: {
     throw new Error("Invalid APL config, ");
