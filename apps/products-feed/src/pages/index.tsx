@@ -20,11 +20,16 @@ const IndexPage: NextPage = () => {
     return <span>Loading...</span>;
   }
 
+
+
   return (
     <div>
       <h1>Saleor Product Feed</h1>
       <p>This is Saleor App that allows product feed generation</p>
       <p>Install app in your Saleor instance and open in with Dashboard</p>
+      {process.env.SALEOR_APP_TOKEN}
+      {process.env.SALEOR_APP_ID}
+      {process.env.SALEOR_API_URL}
     </div>
   );
 };
