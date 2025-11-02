@@ -1,9 +1,9 @@
 import { APL } from "@saleor/app-sdk/APL";
 import { DynamoAPL } from "@saleor/app-sdk/APL/dynamodb";
+import { EnvAPL } from "@saleor/app-sdk/APL/env";
 import { FileAPL } from "@saleor/app-sdk/APL/file";
 import { SaleorCloudAPL } from "@saleor/app-sdk/APL/saleor-cloud";
 import { UpstashAPL } from "@saleor/app-sdk/APL/upstash";
-import { EnvAPL } from "@saleor/app-sdk/APL/env";
 import { SaleorApp } from "@saleor/app-sdk/saleor-app";
 
 import { dynamoMainTable } from "@/modules/dynamodb/dynamo-main-table";
