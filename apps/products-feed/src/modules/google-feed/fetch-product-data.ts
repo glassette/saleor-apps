@@ -86,7 +86,7 @@ export const fetchVariants = async ({
 }): Promise<ProductVariant[]> => {
   const logger = createLogger("fetchVariants");
 
-  logger.debug(`Fetching variants for channel ${channel} with cursor ${after}`);
+  logger.info(`Fetching variants for channel ${channel} with cursor ${after}`);
 
   const productVariantsData = await client
     .query(FetchProductVariantsDataDocument, {
