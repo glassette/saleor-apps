@@ -91,7 +91,7 @@ const handler: NextApiHandler = async (req, res) => {
   });
 
   const downloadUrl = await new SignedUrls(s3Client).generateSignedGetObjectUrl({
-    expiresSeconds: 30,
+    expiresSeconds: 3600,
     fileName,
     bucket: channelSettings.s3BucketConfiguration.bucketName,
   });
