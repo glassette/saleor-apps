@@ -11,11 +11,11 @@ export const channelsRouter = router({
 
       const fetcher = new ChannelsFetcher(apiClient);
 
-      logger.debug("Fetching channels");
+      logger.info("Fetching channels");
 
       const channels = await fetcher.fetchChannels().then((channels) => channels ?? []);
 
-      logger.debug("Channels fetched successfully", {
+      logger.info("Channels fetched successfully", {
         first: channels[0],
         totalLength: channels.length,
       });

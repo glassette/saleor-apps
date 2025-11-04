@@ -100,10 +100,10 @@ export class AppConfig {
 
   setS3(s3Config: z.infer<typeof s3ConfigSchema>) {
     try {
-      logger.debug("Setting S3 config");
+      logger.info("Setting S3 config");
       this.rootData.s3 = s3ConfigSchema.parse(s3Config);
 
-      logger.debug("S3 config saved");
+      logger.info("S3 config saved");
 
       return this;
     } catch (e) {
@@ -114,10 +114,10 @@ export class AppConfig {
 
   setAttributeMapping(attributeMapping: z.infer<typeof attributeMappingSchema>) {
     try {
-      logger.debug("Setting attribute mapping");
+      logger.info("Setting attribute mapping");
       this.rootData.attributeMapping = attributeMappingSchema.parse(attributeMapping);
 
-      logger.debug("Attribute mapping saved");
+      logger.info("Attribute mapping saved");
 
       return this;
     } catch (e) {
@@ -128,14 +128,14 @@ export class AppConfig {
 
   setChannelUrls(channelSlug: string, urlsConfig: z.infer<typeof urlConfigurationSchema>) {
     try {
-      logger.debug("Setting channel urls", { channelSlug });
+      logger.info("Setting channel urls", { channelSlug });
       const parsedConfig = urlConfigurationSchema.parse(urlsConfig);
 
       this.rootData.channelConfig[channelSlug] = {
         storefrontUrls: parsedConfig,
       };
 
-      logger.debug("Channel urls saved");
+      logger.info("Channel urls saved");
 
       return this;
     } catch (e) {

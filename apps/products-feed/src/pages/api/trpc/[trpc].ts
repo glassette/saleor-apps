@@ -20,7 +20,7 @@ const handler = trpcNext.createNextApiHandler({
 
       return;
     }
-    logger.debug(`${path} returned error:`, { error: error });
+    logger.info(`${path} returned error:`, { error: error });
   },
 });
 

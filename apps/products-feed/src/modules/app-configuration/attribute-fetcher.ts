@@ -47,11 +47,11 @@ export class AttributeFetcher {
   async fetchAllAttributes(): Promise<AttributeWithMappingFragmentFragment[]> {
     const attributes: AttributeWithMappingFragmentFragment[] = [];
 
-    this.logger.debug("fetchAllAttributes called");
+    this.logger.info("fetchAllAttributes called");
 
     const result = await this.fetchRecursivePage(attributes, undefined);
 
-    this.logger.debug("Attributes fetched successfully", {
+    this.logger.info("Attributes fetched successfully", {
       first: result[0],
       totalLength: result.length,
     });

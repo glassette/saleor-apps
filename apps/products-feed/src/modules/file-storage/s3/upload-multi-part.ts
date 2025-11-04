@@ -83,7 +83,7 @@ export const UploadMultiPart = async ({
       }),
     );
 
-    logger.debug("Multipart upload completed");
+    logger.info("Multipart upload completed");
 
     return completeCommand;
   } catch (err) {

@@ -63,7 +63,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ error: fieldErrors });
   }
 
-  logger.debug("Checking if app is installed in the given env");
+  logger.info("Checking if app is installed in the given env");
   const authData = await apl.get(url as string);
 
   if (!authData) {
@@ -72,7 +72,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ error: "The given instance has not been registered" });
   }
 
-  logger.debug("The app is registered for the given URL, checking the configuration", {
+  logger.info("The app is registered for the given URL, checking the configuration", {
     appId: authData.appId,
   });
 
@@ -164,7 +164,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       .then((data) => data.LastModified)
       // If the file does not exist, error is thrown and we can ignore it
       .catch(() => {
-        logger.debug("Feed file not found in S3", {
+        logger.info("Feed file not found in S3", {
           bucketName: bucketConfiguration!.bucketName,
           fileName,
         });
@@ -195,7 +195,7 @@ export const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
   }
 
-  logger.debug("Generating a new feed");
+  logger.info("Generating a new feed");
 
   const cursors = await getCursors({ client, channel });
 

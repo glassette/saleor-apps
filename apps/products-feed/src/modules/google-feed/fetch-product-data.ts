@@ -54,7 +54,7 @@ export const getCursors = async ({
 }) => {
   const logger = createLogger("getCursors");
 
-  logger.debug(`Fetching product cursors for channel ${channel}`);
+  logger.info(`Fetching product cursors for channel ${channel}`);
 
   const firstResult = await client
     .query(FetchProductCursorsDocument, { channel: channel, first: VARIANTS_PER_PAGE })
@@ -153,7 +153,7 @@ export const fetchVariants = async ({
       })
       .filter((e) => e !== null);
 
-    logger.debug("Product variants fetched successfully", {
+    logger.info("Product variants fetched successfully", {
       first: productVariants[0],
       totalLength: productVariants.length,
     });
