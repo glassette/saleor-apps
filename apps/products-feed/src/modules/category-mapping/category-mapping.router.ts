@@ -24,7 +24,7 @@ export const categoryMappingRouter = router({
       });
     });
 
-    logger.info("Returning categories", { first: result[0], totalLength: result.length });
+    logger.debug("Returning categories", { first: result[0], totalLength: result.length });
 
     return result;
   }),
@@ -46,7 +46,7 @@ export const categoryMappingRouter = router({
         })
         .toPromise();
 
-      logger.info("Updated category mapping");
+      logger.debug("Updated category mapping");
 
       if (error) {
         logger.error(`Error during the GraphqlAPI call: ${error.message}`);

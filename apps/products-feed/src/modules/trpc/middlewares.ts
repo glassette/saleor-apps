@@ -12,7 +12,7 @@ export const attachLogger = middleware(async ({ ctx, next, type, path }) => {
 
   const start = Date.now();
 
-  logger.info(`Requested received`);
+  logger.debug(`Requested received`);
 
   const result = await next({
     ctx: {
@@ -22,9 +22,9 @@ export const attachLogger = middleware(async ({ ctx, next, type, path }) => {
   const durationMs = Date.now() - start;
 
   if (result.ok) {
-    logger.info(`Response successful`, { durationMs });
+    logger.debug(`Response successful`, { durationMs });
   } else {
-    logger.info(`Response with error`, { durationMs });
+    logger.debug(`Response with error`, { durationMs });
   }
 
   return result;

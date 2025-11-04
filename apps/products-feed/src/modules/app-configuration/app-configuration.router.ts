@@ -18,12 +18,12 @@ export const appConfigurationRouter = router({
   fetch: protectedClientProcedure.query(async ({ ctx: { getConfig } }) => {
     const logger = createLogger("appConfigurationRouter.fetch");
 
-    logger.info("Fetching configuration");
+    logger.debug("Fetching configuration");
 
     try {
       const configuration = await getConfig();
 
-      logger.info("Configuration fetched");
+      logger.debug("Configuration fetched");
 
       return configuration.getRootConfig();
     } catch (e) {
@@ -43,7 +43,7 @@ export const appConfigurationRouter = router({
         bucketRegion: input.region,
       });
 
-      logger.info("Validate the credentials");
+      logger.debug("Validate the credentials");
 
       const s3Client = createS3ClientFromConfiguration(input);
 
@@ -74,7 +74,7 @@ export const appConfigurationRouter = router({
         bucketRegion: input.region,
       });
 
-      logger.info("Validate credentials");
+      logger.debug("Validate credentials");
 
       const s3Client = createS3ClientFromConfiguration(input);
 
@@ -94,7 +94,7 @@ export const appConfigurationRouter = router({
         });
       }
 
-      logger.info("Credentials validated, saving");
+      logger.debug("Credentials validated, saving");
 
       const config = await getConfig();
 
@@ -120,7 +120,7 @@ export const appConfigurationRouter = router({
       });
       const config = await getConfig();
 
-      logger.info("Updated cache for channel");
+      logger.debug("Updated cache for channel");
 
       config.setChannelUrls(input.channelSlug, input.urls);
 
@@ -135,7 +135,7 @@ export const appConfigurationRouter = router({
     .mutation(async ({ ctx: { getConfig, appConfigMetadataManager }, input }) => {
       const logger = createLogger("appConfigurationRouter.setAttributeMapping");
 
-      logger.info("Setting attribute mapping");
+      logger.debug("Setting attribute mapping");
       const config = await getConfig();
 
       config.setAttributeMapping(input);
@@ -158,7 +158,7 @@ export const appConfigurationRouter = router({
       });
     });
 
-    logger.info("Returning attributes", { first: result[0], totalLength: result.length });
+    logger.debug("Returning attributes", { first: result[0], totalLength: result.length });
 
     return result;
   }),
@@ -167,7 +167,7 @@ export const appConfigurationRouter = router({
     .mutation(async ({ ctx: { getConfig, appConfigMetadataManager }, input }) => {
       const logger = createLogger("appConfigurationRouter.setImageSize");
 
-      logger.info("Setting image size", { imageSize: input.imageSize });
+      logger.debug("Setting image size", { imageSize: input.imageSize });
       const config = await getConfig();
 
       config.setImageSize(input.imageSize);
@@ -184,7 +184,7 @@ export const appConfigurationRouter = router({
     .mutation(async ({ ctx: { getConfig, appConfigMetadataManager }, input }) => {
       const logger = createLogger("appConfigurationRouter.setTitleTemplate");
 
-      logger.info("Setting title template", { titleTemplate: input.titleTemplate });
+      logger.debug("Setting title template", { titleTemplate: input.titleTemplate });
       const config = await getConfig();
 
       // Test render to prevent saving invalid template
@@ -215,7 +215,7 @@ export const appConfigurationRouter = router({
     .mutation(async ({ ctx: { getConfig }, input }) => {
       const logger = createLogger("appConfigurationRouter.setTitleTemplate");
 
-      logger.info(input, "renderTemplate called");
+      logger.debug(input, "renderTemplate called");
       const config = await getConfig();
 
       try {
@@ -226,7 +226,7 @@ export const appConfigurationRouter = router({
           template: input.titleTemplate,
         });
 
-        logger.info("Title rendered succeeded");
+        logger.debug("Title rendered succeeded");
 
         return { title };
       } catch (err) {

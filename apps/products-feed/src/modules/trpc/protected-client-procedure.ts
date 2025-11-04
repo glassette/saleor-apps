@@ -15,7 +15,7 @@ const attachAppToken = middleware(async ({ ctx, next }) => {
   const logger = createLogger("attachAppToken");
 
   if (!ctx.saleorApiUrl) {
-    logger.info("ctx.saleorApiUrl not found, throwing");
+    logger.debug("ctx.saleorApiUrl not found, throwing");
 
     throw new TRPCError({
       code: "BAD_REQUEST",
@@ -23,18 +23,18 @@ const attachAppToken = middleware(async ({ ctx, next }) => {
     });
   }
 
-  logger.info("Getting auth data");
+  logger.debug("Getting auth data");
   const authData = await saleorApp.apl.get(ctx.saleorApiUrl);
 
   if (!authData) {
-    logger.info("authData not found, throwing 401");
+    logger.debug("authData not found, throwing 401");
 
     throw new TRPCError({
       code: "UNAUTHORIZED",
       message: "Missing auth data",
     });
   }
-  logger.info("Auth data found, attaching it to the context");
+  logger.debug("Auth data found, attaching it to the context");
 
   return next({
     ctx: {
@@ -70,7 +70,7 @@ const validateClientToken = middleware(async ({ ctx, next, meta }) => {
     });
   }
 
-  logger.info(
+  logger.debug(
     {
       permissions: meta?.requiredClientPermissions,
     },
@@ -88,14 +88,14 @@ const validateClientToken = middleware(async ({ ctx, next, meta }) => {
       ],
     });
   } catch (e) {
-    logger.info("JWT verification failed, throwing");
+    logger.debug("JWT verification failed, throwing");
     throw new TRPCError({
       code: "INTERNAL_SERVER_ERROR",
       message: "JWT verification failed",
     });
   }
 
-  logger.info("Token verified");
+  logger.debug("Token verified");
 
   return next();
 });

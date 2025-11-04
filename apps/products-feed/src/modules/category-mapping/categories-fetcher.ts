@@ -48,11 +48,11 @@ export class CategoriesFetcher {
   async fetchAllCategories(): Promise<CategoryWithMappingFragmentFragment[]> {
     const categories: CategoryWithMappingFragmentFragment[] = [];
 
-    this.logger.info("fetchAllCategories called");
+    this.logger.debug("fetchAllCategories called");
 
     const result = await this.fetchRecursivePage(categories, undefined);
 
-    this.logger.info("Categories fetched successfully", {
+    this.logger.debug("Categories fetched successfully", {
       first: result[0],
       totalLength: result.length,
     });

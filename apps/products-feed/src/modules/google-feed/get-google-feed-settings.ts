@@ -58,7 +58,7 @@ export class GoogleFeedSettingsFetcher {
       imageSize: appConfig.getImageSize(),
     };
 
-    this.logger.info("Google Feed settings fetched successfully", { settings });
+    this.logger.debug("Google Feed settings fetched successfully", { settings });
 
     return settings;
   }
