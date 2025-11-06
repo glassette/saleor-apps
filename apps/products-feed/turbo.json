@@ -22,7 +22,9 @@
         "DYNAMODB_MAIN_TABLE_NAME",
         "SALEOR_APP_TOKEN",
         "SALEOR_APP_ID",
-        "SALEOR_API_URL"
+        "SALEOR_API_URL",
+        "MAX_PARALLEL_CALLS",
+        "VARIANTS_PER_PAGE"
       ]
     }
   }
