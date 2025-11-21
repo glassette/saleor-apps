@@ -56,6 +56,15 @@ export const productToProxy = (p: ProductEntry) => {
       ],
     });
   }
+  else {
+    item.push({
+      "g:description": [
+        {
+          "#text": "Curated by Glassette",
+        },
+      ],
+    });
+  }
 
   if (p.weight) {
     item.push({

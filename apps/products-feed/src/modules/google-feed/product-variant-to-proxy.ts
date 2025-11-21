@@ -74,7 +74,7 @@ export const productVariantToProxy = ({
     slug: variant.product.slug,
     variantId: variant.id,
     sku: variant.sku ?? undefined,
-    description: EditorJsPlaintextRenderer({ stringData: variant.product.description }) || "Curated by Glassette",
+    description: EditorJsPlaintextRenderer({ stringData: variant.product.description }),
     availability: "in_stock",
     category: variant.product.category?.name || "unknown",
     googleProductCategory: variant.product.category?.googleCategoryId || "",
