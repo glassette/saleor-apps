@@ -7,7 +7,7 @@ fragment GoogleFeedProductVariant on ProductVariant {
     value
   }
   pricing {
-    priceUndiscounted{
+    priceUndiscounted {
       gross {
         currency
         amount
@@ -39,26 +39,32 @@ fragment GoogleFeedProductVariant on ProductVariant {
     productType {
       isShippingRequired
     }
-    media{
+    channelListings {
+      isPublished
+      channel {
+        slug
+      }
+    }
+    media {
       id
       alt
       url(size: $imageSize)
       type
     }
-    variants{
+    variants {
       id
-      media{
+      media {
         id
         alt
         url(size: $imageSize)
         type
       }
     }
-    attributes{
-      attribute{
+    attributes {
+      attribute {
         id
       }
-      values{
+      values {
         value
         name
       }

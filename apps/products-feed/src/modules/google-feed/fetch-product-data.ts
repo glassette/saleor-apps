@@ -88,7 +88,7 @@ export const fetchVariants = async ({
 
   logger.info(`Fetching variants for channel ${channel} with cursor ${after}`);
 
-  const productVariantsData = await client
+  let productVariantsData = await client
     .query(FetchProductVariantsDataDocument, {
       channel: channel,
       first: VARIANTS_PER_PAGE,
@@ -106,6 +106,13 @@ export const fetchVariants = async ({
 
     return [];
   }
+
+  productVariantsData = productVariantsData.filter(
+    (variant: any) =>
+      variant.product.channelListings?.some(
+        (cl: any) => cl.isPublished && cl.channel.slug === channel,
+      ),
+  );
 
   const allProductIds =
     productVariantsData.data?.productVariants?.edges.map((e) => e.node.product.id) || [];
