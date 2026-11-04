@@ -1,27 +1,35 @@
 fragment BasicProductData on ProductVariant {
+  id
+  name
+  sku
+  product {
     id
-    name
-    sku
-    product {
-        id
+  }
+  weight {
+    unit
+    value
+  }
+  pricing {
+    priceUndiscounted {
+      gross {
+        currency
+        amount
+      }
     }
-    weight {
-        unit
-        value
+    price {
+      gross {
+        currency
+        amount
+      }
     }
-    pricing {
-        priceUndiscounted {
-            gross {
-                currency
-                amount
-            }
-        }
-        price {
-            gross {
-                currency
-                amount
-            }
-        }
+  }
+  quantityAvailable
+  product {
+    channelListings {
+      isPublished
+      channel {
+        slug
+      }
     }
-    quantityAvailable
+  }
 }
