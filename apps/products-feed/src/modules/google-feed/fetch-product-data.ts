@@ -145,6 +145,8 @@ export const fetchVariants = async ({
         ),
     ) || [];
 
+  logger.info(`Example product ${JSON.stringify(variantEdges[0])}`);
+
   try {
     const productVariants = variantEdges
       .map((e) => {
