@@ -137,6 +137,10 @@ export const fetchVariants = async ({
     return [];
   }
 
+  logger.info(
+    `Example pre-product ${JSON.stringify(productVariantsData.data?.productVariants?.edges[0])}`,
+  );
+
   const variantEdges =
     productVariantsData.data?.productVariants?.edges.filter(
       (variant: any) =>
