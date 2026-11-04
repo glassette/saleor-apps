@@ -107,7 +107,7 @@ export const fetchVariants = async ({
     return [];
   }
 
-  productVariantsData = productVariantsData.filter(
+  productVariantsData = productVariantsData.data?.productVariants?.edges.filter(
     (variant: any) =>
       variant.product.channelListings?.some(
         (cl: any) => cl.isPublished && cl.channel.slug === channel,
@@ -115,7 +115,14 @@ export const fetchVariants = async ({
   );
 
   const allProductIds =
-    productVariantsData.data?.productVariants?.edges.map((e) => e.node.product.id) || [];
+    productVariantsData.data?.productVariants?.edges
+      .filter(
+        (variant: any) =>
+          variant.node.product.channelListings?.some(
+            (cl: any) => cl.isPublished && cl.channel.slug === channel,
+          ),
+      )
+      .map((e) => e.node.product.id) || [];
 
   const productIds = Array.from(new Set(allProductIds));
 
@@ -137,7 +144,13 @@ export const fetchVariants = async ({
     return [];
   }
 
-  const variantEdges = productVariantsData.data?.productVariants?.edges || [];
+  const variantEdges =
+    productVariantsData.data?.productVariants?.edges.filter(
+      (variant: any) =>
+        variant.node.product.channelListings?.some(
+          (cl: any) => cl.isPublished && cl.channel.slug === channel,
+        ),
+    ) || [];
 
   try {
     const productVariants = variantEdges
