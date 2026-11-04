@@ -63,7 +63,7 @@
     "modern-errors": "catalog:",
     "modern-errors-serialize": "catalog:",
     "neverthrow": "catalog:",
-    "next": "catalog:",
+    "next": "15.5.8",
     "nodemailer": "^6.9.1",
     "react": "catalog:",
     "react-dom": "catalog:",

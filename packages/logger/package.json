@@ -33,7 +33,7 @@
     "@sentry/nextjs": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
-    "next": "catalog:",
+    "next": "15.5.8",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vitest": "catalog:"

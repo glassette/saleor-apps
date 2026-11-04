@@ -22,7 +22,7 @@
     "@trpc/react-query": "catalog:",
     "@trpc/server": "catalog:",
     "@types/node": "catalog:",
-    "next": "catalog:",
+    "next": "15.5.8",
     "typescript": "5.8.2"
   },
   "peerDependencies": {

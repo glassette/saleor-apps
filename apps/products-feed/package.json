@@ -60,7 +60,7 @@
     "handlebars": "^4.7.7",
     "handlebars-helpers": "0.10.0",
     "jsdom": "catalog:",
-    "next": "catalog:",
+    "next": "15.5.8",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-hook-form": "catalog:",

@@ -63,7 +63,7 @@
     "modern-errors": "catalog:",
     "modern-errors-serialize": "catalog:",
     "neverthrow": "catalog:",
-    "next": "catalog:",
+    "next": "15.5.8",
     "react": "catalog:",
     "react-dom": "catalog:",
     "react-error-boundary": "4.0.10",

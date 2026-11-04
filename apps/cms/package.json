@@ -58,7 +58,7 @@
     "graphql": "catalog:",
     "graphql-tag": "catalog:",
     "jsdom": "catalog:",
-    "next": "catalog:",
+    "next": "15.5.8",
     "p-ratelimit": "1.0.1",
     "qs": "6.11.2",
     "react": "catalog:",

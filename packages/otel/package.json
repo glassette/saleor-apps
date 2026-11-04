@@ -26,7 +26,7 @@
     "@saleor/typescript-config-apps": "workspace:*",
     "@types/node": "catalog:",
     "eslint": "catalog:",
-    "next": "catalog:",
+    "next": "15.5.8",
     "typescript": "catalog:",
     "urql": "catalog:"
   },
