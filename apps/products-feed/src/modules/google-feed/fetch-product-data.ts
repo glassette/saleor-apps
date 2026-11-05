@@ -137,10 +137,6 @@ export const fetchVariants = async ({
     return [];
   }
 
-  logger.info(
-    `Example pre-product ${JSON.stringify(productVariantsData.data?.productVariants?.edges[0])}`,
-  );
-
   const variantEdges =
     productVariantsData.data?.productVariants?.edges.filter(
       (variant: any) =>
@@ -148,8 +144,6 @@ export const fetchVariants = async ({
           (cl: any) => cl.isPublished && cl.channel.slug === channel,
         ),
     ) || [];
-
-  logger.info(`Example product ${JSON.stringify(variantEdges[0])}`);
 
   try {
     const productVariants = variantEdges
